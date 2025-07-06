@@ -1,15 +1,9 @@
-#include <cstdio>
-#include <sqlite3.h>
+#include "model/Database.h"
 
 int main(){
-    sqlite3 *db;
-    const int rc = sqlite3_open("database.db", &db);
-    if( rc ) {
-        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-        return(0);
-    } else {
-        fprintf(stderr, "Opened database successfully\n");
-    }
-    sqlite3_close(db);
+    vertelien2::Database db;
+    db.TableCheck();
+    vertelien2::Job job = vertelien2::Job();
+    db.job.Add(job);
     return 0;
 }

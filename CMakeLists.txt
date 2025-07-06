@@ -20,9 +20,16 @@ file(GLOB_RECURSE SRC
 )
 
 source_group(TREE ../src/ FILES ${SRC})
-
 add_executable(Vertelien2Cluster ${SRC}
-		src/model/database.cpp
-		src/model/database.h)
-target_link_libraries(Vertelien2Cluster PRIVATE SQLite::SQLite3)
-target_include_directories(Vertelien2Cluster PUBLIC "lib/sqlite3/include")
+		src/model/Database.cpp
+		src/model/Database.h
+		src/model/Job.cpp
+		src/model/Job.h)
+target_link_libraries(Vertelien2Cluster PRIVATE
+		SQLite::SQLite3
+		"${CMAKE_HOME_DIRECTORY}/lib/Verteilen2Core/cmake-build-debug/archive/libVertelien2Core.a"
+)
+target_include_directories(Vertelien2Cluster PUBLIC
+		"lib/sqlite3/include"
+		"lib/Verteilen2Core/include"
+)
