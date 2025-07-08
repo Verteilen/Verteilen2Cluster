@@ -19,7 +19,7 @@ file(GLOB_RECURSE SRC
 		src/**.cpp
 )
 
-source_group(TREE ../src/ FILES ${SRC})
+source_group(TREE src FILES ${SRC})
 add_executable(Vertelien2Cluster ${SRC}
 		src/model/Database.cpp
 		src/model/Database.h
